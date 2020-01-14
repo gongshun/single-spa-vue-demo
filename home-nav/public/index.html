@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>home-nav</title>
+   <!-- 配置文件注意写成绝对路径：/开头，否则访问子项目的时候重定向的index.html，相对目录会出错 -->
+   <script type="systemjs-importmap" src="/config/importmap.json"></script>
+   <!-- 预请求single-spa,vue,vue-router文件 -->
+   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js" as="script" crossorigin="anonymous" />
+   <link rel="preload" href="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js" as="script" crossorigin="anonymous" />
+   <link rel="preload" href="https://cdn.jsdelivr.net/npm/vue-router@3.0.7/dist/vue-router.min.js" as="script" crossorigin="anonymous" />
+   <!-- 引入system.js相关文件 -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/system.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/amd.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/named-exports.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/use-default.min.js"></script>
+  </head>
+  <body>
+    <script>
+      (function() {
+        System.import('single-spa').then(singleSpa => {
+          singleSpa.registerApplication(
+            'appVueHistory',
+            () => System.import('appVueHistory'),
+            location => location.pathname.startsWith('/app-vue-history/')
+          )
+          singleSpa.registerApplication(
+            'appVueHash',
+            () => System.import('appVueHash'),
+            location => location.pathname.startsWith('/app-vue-hash/')
+          )
+          singleSpa.start();
+        })
+      })()
+    </script>
+    <div class="wrap">
+      <div class="nav-wrap">
+        <div id="app"></div>
+      </div>
+      <div class="single-spa-container">
+        <!-- <div id="single-spa-application:app1"></div> -->
+        <!-- <div id="single-spa-application:appVue"></div> -->
+        <!-- <div id="single-spa-application:appVueHistory"></div> -->
+      </div>
+    </div>
+    <style>
+    .wrap{
+      display: flex;
+    }
+    .nav-wrap{
+      flex: 0 0 200px;
+    }
+    .content{
+      width: 200px;
+      flex-grow: 1;
+    }
+    </style>
+  </body>
+</html>

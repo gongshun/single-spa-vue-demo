@@ -1,0 +1,34 @@
+{
+  "name": "app-vue-history",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "spa-serve": "vue-cli-service serve --mode devSingleSpa",
+    "serve": "vue-cli-service serve",
+    "spa-build": "vue-cli-service build --mode singleSpa",
+    "usual-build": "vue-cli-service build",
+    "dev": "npm run serve && spa-serve",
+    "build": "npm run spa-build && npm run usual-build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^3.4.4",
+    "single-spa-vue": "^1.7.0",
+    "systemjs-webpack-interop": "^1.1.2",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.3",
+    "vuex": "^3.1.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-router": "^4.1.0",
+    "@vue/cli-plugin-vuex": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "vue-cli-plugin-single-spa": "^1.1.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
