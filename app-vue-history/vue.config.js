@@ -9,13 +9,16 @@ const config = {
 };
 
 const enteyFile = env === 'singleSpa' ? './src/index.spa.js' : './src/index.js';
+//正常打包的app.js在js目录下，而single-spa模式则需要在根目录下。
+//打包时会从dist-spa/js目录将app.js拷贝到正常打包的根目录下，所以不用管，只需要判断single-spa的开发模式即可
+const filename = modeEnv === 'development' ? '[name].js' : 'js/[name].js';
 
 chainWebpack = config => {
   config.entry('app')
     .add(enteyFile)
     .end()
     .output
-      .filename('[name].js'); //将app.js生成到index.html同目录下，而不是/js目录
+      .filename(filename);
   if(env === 'singleSpa'){
     //vue,vue-router不打包进app.js
     config.externals(['vue', 'vue-router'])
@@ -38,7 +41,7 @@ if(env === 'singleSpa'){
       plugins: [
         //将single-spa模式下打包生成的app.js拷贝到正常模式打包的主目录
         new CopyPlugin([{ 
-          from: 'dist-spa/app.js',
+          from: 'dist-spa/js/app.js',
           to: '' 
         }])
       ],

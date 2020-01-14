@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
+    <p v-if="isSingleSpa">single-spa模式独有的文字</p>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
@@ -13,6 +14,11 @@ export default {
   name: 'home',
   components: {
     HelloWorld
-  }
+  },
+  computed: {
+    isSingleSpa(){
+      return this.$store.state.isSingleSpa;
+    }
+  },
 }
 </script>
