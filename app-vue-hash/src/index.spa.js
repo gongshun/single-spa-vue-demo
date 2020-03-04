@@ -1,5 +1,5 @@
 import './set-public-path'
-import singleSpaVue from 'single-spa-vue';
+import singleSpaVue from './assets/single-spa-vue';
 import appOptions from './main';
 import './main';
 import Vue from 'vue';
