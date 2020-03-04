@@ -25,7 +25,8 @@
           singleSpa.registerApplication(
             'appVueHistory',
             () => System.import('appVueHistory'),
-            location => location.pathname.startsWith('/app-vue-history/')
+            location => location.pathname.startsWith('/app-vue-history/'),
+            { authToken: "d83jD63UdZ6RS6f70D0", data2: 'data2' } //传给子系统的数据
           )
           singleSpa.registerApplication(
             'appVueHash',

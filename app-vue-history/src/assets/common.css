@@ -1,0 +1,4 @@
+/* 全局的css限定范围 */
+.app-vue-history h1{
+    color: red;
+}
