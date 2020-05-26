@@ -22,6 +22,8 @@ chainWebpack = config => {
   if(env === 'singleSpa'){
     //vue,vue-router不打包进app.js
     config.externals(['vue', 'vue-router','echarts'])
+  }else{
+    config.externals(['echarts'])
   }
 }
 
