@@ -1,0 +1,36 @@
+{
+  "name": "single-spa-vue-demo",
+  "version": "1.0.0",
+  "description": "`home-nav`是主项目，`app-vue-hash`是`hash`模式路由的子项目，`app-vue-history`是`history`模式路由的子项目",
+  "main": "index.js",
+  "scripts": {
+    "install:hash": "cd app-vue-hash && npm install",
+    "install:history": "cd app-vue-history && npm install",
+    "install:main": "cd home-nav && npm install",
+    "install-all": "npm-run-all install:*",
+    "start:hash": "cd app-vue-hash && npm run serve ",
+    "start:history": "cd app-vue-history && npm run serve",
+    "start:main": "cd home-nav && npm run serve",
+    "start-usual-all": "npm-run-all --parallel start:*",
+    "start-spa:hash": "cd app-vue-hash && npm run spa-serve",
+    "start-spa:history": "cd app-vue-history && npm run spa-serve",
+    "start-all": "npm-run-all --parallel start:main start-spa:*",
+    "build:hash": "cd app-vue-hash && npm run build",
+    "build:history": "cd app-vue-history && npm run build",
+    "build:main": "cd home-nav && npm run build",
+    "build-all": "npm-run-all --parallel build:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gongshun/single-spa-vue-demo.git"
+  },
+  "author": "gongshun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gongshun/single-spa-vue-demo/issues"
+  },
+  "homepage": "https://github.com/gongshun/single-spa-vue-demo#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
